@@ -1,0 +1,38 @@
+version: '2'
+
+services:
+    postgres:
+        extends: 
+            file: postgres/docker-compose.postgres.yml
+            service: postgres
+    pgadmin4:
+        extends: 
+            file: postgres/docker-compose.postgres.yml
+            service: pgAdmin4
+        links: 
+            - postgres
+    wildfly:
+        extends: 
+            file: wildfly/docker-compose.wildfly.yml
+            service: wildfly
+        links:
+            - postgres
+    swagger:
+        image: schickling/swagger-ui:latest
+        container_name: swagger
+        environment:
+            - API_URL=http://localhost/swagger-ui
+        ports: 
+            - 85:80 # pour permettre un accès direct hors proxy :)
+    proxy:
+        image: traefik:latest
+        container_name: traefik
+        volumes:
+            - ./traefik/traefik.toml:/etc/traefik/traefik.toml
+        ports:
+            - 80:80
+            - 9000:9000
+        links:
+            - wildfly
+            - swagger
+            - pgadmin4

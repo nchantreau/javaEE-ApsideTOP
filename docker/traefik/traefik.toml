@@ -1,0 +1,30 @@
+logLevel = "WARNING"
+defaultEntryPoints = ["http"]
+
+[entryPoints]
+  [entryPoints.http]
+    address = ":80"
+
+[backends]
+  [backends.wildfly]
+    [backends.wildfly.servers.main]
+      url = "http://wildfly:9990"
+  [backends.swagger-ui]
+    [backends.swagger-ui.LoadBalancer]
+        method = "wrr"
+    [backends.swagger-ui.servers.main]
+      url = "http://swagger:80"
+
+
+[frontEnds]
+  [frontEnds.swagger-ui]
+    backend = "swagger-ui"
+    entrypoints = ["http"]
+    [frontEnds.swagger-ui.routes.main]
+      rule = "PathPrefixStrip:/swagger-ui"
+
+[file]
+  watch = true
+
+[web]
+  address = ":9000"

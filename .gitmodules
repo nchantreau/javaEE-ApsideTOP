@@ -1,0 +1,3 @@
+[submodule "docker/postgres/pgadmin/pgadmin4"]
+	path = docker/postgres/pgadmin/pgadmin4
+	url = git://git.postgresql.org/git/pgadmin4.git

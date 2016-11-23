@@ -1,0 +1,15 @@
+version: '2'
+
+services:
+    postgres:
+        build:
+            context: .
+        image: apside/postgres-formation
+        container_name: postgres-db
+        ports:
+            - 5432:5432
+    pgAdmin4:
+        image: fenglc/pgadmin4:latest
+        container_name: pgAdmin4
+        ports:
+            - 5050:5050

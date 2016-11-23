@@ -1,0 +1,12 @@
+version: '2'
+
+services:
+    wildfly:
+        build:
+            context: .
+        image: apside/wildfly-formation
+        container_name: wildfly
+        ports:
+            - 8080:8080
+            - 9990:9990
+            - 8787:8787
