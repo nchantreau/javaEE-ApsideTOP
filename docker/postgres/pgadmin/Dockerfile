@@ -1,5 +1,5 @@
 FROM python:2-alpine
-MAINTAINER fenglc <fenglc89@gmail.com>
+MAINTAINER François Robert <francois.robert@shipstone.org>
 
 COPY pgadmin4 /pgadmin4	
 
@@ -14,7 +14,6 @@ RUN set -x \
 	&&  cp config.py config_local.py \
 	&&  sed -i "s/SERVER_MODE = True/SERVER_MODE = False/g" config_local.py \
 	&&  sed -i "s/DEFAULT_SERVER = 'localhost'/DEFAULT_SERVER = '0.0.0.0'/g" config_local.py \
-	&&  sed -i "s/DEFAULT_SERVER_PORT = 5050/DEFAULT_SERVER_PORT = 80/g" config_local.py \
 	&&  apk del .build-deps \
 	&&  rm -rf /root/.cache
 
@@ -25,6 +24,9 @@ LABEL org.label-schema.url="https://www.pgadmin.org" \
       org.label-schema.version="4"
 
 COPY docker-entrypoint.sh /
+
+COPY session/pgadmin4.db /root/.pgadmin/pgadmin4.db
+
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
 EXPOSE 80
