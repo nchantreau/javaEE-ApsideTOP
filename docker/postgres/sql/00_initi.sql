@@ -7,6 +7,9 @@ SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
+create SCHEMA "jpa";
+GRANT ALL ON SCHEMA jpa TO admin;
+
 CREATE SCHEMA "data";
 GRANT ALL ON SCHEMA data TO admin;
 SET search_path = "data", pg_catalog;
