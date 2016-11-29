@@ -7,9 +7,13 @@
     <groupId>fr.apside</groupId>
     <artifactId>formation</artifactId>
     <version>2016.1</version>
+    <modules>
+        <module>01-jpa</module>
+    </modules>
     <packaging>pom</packaging>
 
     <properties>
+        <java.version>1.8</java.version>
         <javaee.version>7.0</javaee.version>
     </properties>
 
@@ -18,6 +22,11 @@
             <dependency>
                 <groupId>javax</groupId>
                 <artifactId>javaee-api</artifactId>
+                <version>${javaee.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>javax</groupId>
+                <artifactId>javaee-web-api</artifactId>
                 <version>${javaee.version}</version>
             </dependency>
         </dependencies>
@@ -30,8 +39,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.6.0</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                 </configuration>
             </plugin>
         </plugins>
