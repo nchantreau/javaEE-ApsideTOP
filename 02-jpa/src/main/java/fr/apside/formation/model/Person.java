@@ -1,6 +1,5 @@
 package fr.apside.formation.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,7 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.Objects;
@@ -45,14 +43,11 @@ public class Person implements Serializable {
   /**
    * Prénom
    */
+  @Column(name = "PERSON_FIRSTNAME")
   private String firstname;
 
-  @OneToOne
-  @PrimaryKeyJoinColumn(name = "person_id", referencedColumnName = "address_person_id")
   private Address address;
 
-  @OneToMany(mappedBy = "participant", fetch = FetchType.LAZY)
-  private Set<Participantion> trainingParticipationSet;
   public Person() {
   }
 

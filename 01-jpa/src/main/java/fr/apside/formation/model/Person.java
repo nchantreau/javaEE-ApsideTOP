@@ -1,19 +1,15 @@
 package fr.apside.formation.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
 import java.util.Objects;
 
 /**
  * @author François Robert
  */
-@Entity
 public class Person {
 
   /**
    * Identifiant
    */
-  @Id
   private Long id;
 
   /**
