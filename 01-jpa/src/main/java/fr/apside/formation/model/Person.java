@@ -10,13 +10,25 @@ import java.util.Objects;
 @Entity
 public class Person {
 
+  /**
+   * Identifiant
+   */
   @Id
   private Long id;
 
+  /**
+   * Login
+   */
   private String login;
 
+  /**
+   * Nom de famille
+   */
   private String surname;
 
+  /**
+   * Prénom
+   */
   private String firstname;
 
   public Long getId() {

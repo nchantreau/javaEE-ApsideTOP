@@ -9,6 +9,9 @@
     <version>2016.1</version>
     <modules>
         <module>01-jpa</module>
+        <module>10-ejb</module>
+        <module>99-data</module>
+        <module>99-UtilTest</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -21,6 +24,12 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>fr.apside</groupId>
+                <artifactId>99-UtilTest</artifactId>
+                <version>${project.version}</version>
+                <scope>test</scope>
+            </dependency>
             <dependency>
                 <groupId>javax</groupId>
                 <artifactId>javaee-api</artifactId>
@@ -45,6 +54,7 @@
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
                 <version>4.12</version>
+                <scope>test</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
