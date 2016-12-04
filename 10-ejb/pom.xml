@@ -30,6 +30,14 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <configuration>
+                    <commandlineArgs>-Duser.language=en -Duser.country=EN</commandlineArgs>
+                    <mainClass>fr.apside.formation.services.BaseService</mainClass>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 </project>

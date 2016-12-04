@@ -1,6 +1,7 @@
 package fr.apside.formation.services;
 
 import fr.apside.formation.model.Person;
+import fr.apside.formation.model.Training;
 
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
@@ -15,17 +16,41 @@ import java.util.List;
 @Stateless
 public class BaseService {
 
-  @PersistenceContext(unitName = "formationPU")
-  private EntityManager entityManager;
 
   public String sayHello() {
     return "hello";
   }
 
-  @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
-  public List<Person> getAllPerson() {
-    return entityManager.createNamedQuery(Person.FIND_ALL_ORDER_BY_LOGIN, Person.class)
-        .getResultList();
+  /**
+   * Renvoi la liste de personne
+   * @return liste
+   */
+  public List<Person> getPersonList() {
+    return null;
+  }
+
+  public Person getPersonById(Long personId) {
+    return null;
+  }
+
+  public Person getPersonByLogin(String login) {
+    return null;
+  }
+
+  public Person createPerson(String login, String surname, String firstname) {
+    return null;
+  }
+
+  public Person mergePerson(Person person) {
+    return person;
+  }
+
+  public Person deletePerson(Long personId) {
+    return null;
+  }
+
+  public List<Training> getTrainingListForPerson(Person person) {
+    return null;
   }
 
 }
