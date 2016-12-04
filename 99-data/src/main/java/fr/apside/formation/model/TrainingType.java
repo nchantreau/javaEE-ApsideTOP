@@ -5,6 +5,6 @@ package fr.apside.formation.model;
  */
 public enum TrainingType {
 
-  UNKNOW, QUALIFICATIVE, ONLINE;
+  UNKNOW, AGENCY, ONLINE;
 
 }

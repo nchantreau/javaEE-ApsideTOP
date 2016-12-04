@@ -1,11 +1,14 @@
 package fr.apside.formation.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  * @author François Robert
  */
-public class Person {
+public class Person implements Serializable {
 
   /**
    * Identifiant

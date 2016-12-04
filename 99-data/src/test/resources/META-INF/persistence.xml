@@ -7,9 +7,8 @@
         <class>fr.apside.formation.model.Address</class>
         <class>fr.apside.formation.model.Training</class>
         <class>fr.apside.formation.model.TrainingOnline</class>
-        <class>fr.apside.formation.model.TrainingSkill</class>
-        <class>fr.apside.formation.model.Place</class>
-        <class>fr.apside.formation.model.Participantion</class>
+        <class>fr.apside.formation.model.TrainingAgency</class>
+        <class>fr.apside.formation.model.Participation</class>
         <class>fr.apside.formation.model.Category</class>
 		<!-- declaration des classes -->
 		<properties>

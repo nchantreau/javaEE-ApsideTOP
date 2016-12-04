@@ -16,7 +16,7 @@ import java.util.Date;
  */
 @Entity
 @IdClass(ParticipationId.class)
-public class Participantion implements Serializable{
+public class Participation implements Serializable{
 
   private static final long serialVersionUID = 6082551497084979589L;
 
@@ -31,10 +31,10 @@ public class Participantion implements Serializable{
   @Temporal(TemporalType.DATE)
   private Date registration;
 
-  public Participantion() {
+  public Participation() {
   }
 
-  public Participantion(Training training, Person participant) {
+  public Participation(Training training, Person participant) {
     this.training = training;
     this.participant = participant;
   }

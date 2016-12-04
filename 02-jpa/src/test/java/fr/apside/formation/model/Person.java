@@ -43,7 +43,6 @@ public class Person implements Serializable {
   /**
    * Prénom
    */
-  @Column(name = "PERSON_FIRSTNAME")
   private String firstname;
 
   private Address address;

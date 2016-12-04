@@ -1,7 +1,6 @@
 package fr.apside.formation.model;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
@@ -48,7 +47,7 @@ public class Training implements Serializable {
   private Set<Category> categorySet;
 
   @OneToMany(fetch = FetchType.LAZY, mappedBy = "training")
-  private Set<Participantion> participantionSet;
+  private Set<Participation> participationSet;
 
   /*
   private Date limiteDateForParticipation;
@@ -120,12 +119,12 @@ public class Training implements Serializable {
     this.duration = duration;
   }
 
-  public Set<Participantion> getParticipantionSet() {
-    return participantionSet;
+  public Set<Participation> getParticipationSet() {
+    return participationSet;
   }
 
-  public void setParticipantionSet(Set<Participantion> participantionSet) {
-    this.participantionSet = participantionSet;
+  public void setParticipationSet(Set<Participation> participationSet) {
+    this.participationSet = participationSet;
   }
 
   public Set<Category> getCategorySet() {

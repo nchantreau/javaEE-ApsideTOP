@@ -19,19 +19,17 @@ public class TestPerson extends JpaTest {
   private static EntityManager entityManager;
 
   @Test
-  public void testPerson() {
-    @Test
-    public void personTest() {
-      Person person = new Person("login", "surname", "firstname");
-      person = persist(person);
-      Address address = new Address("line", "zipcode", "city");
-      address.setPerson(person);
-      persist(address);
-      Assert.assertEquals(new Long(1), person.getId());
-      person = new Person("login", "surname", "firstname");
-      person = persist(person);
-    }
+  public void personTest() {
+    Person person = new Person("login", "surname", "firstname");
+    person = persist(person);
+    Address address = new Address("line", "zipcode", "city");
+    address.setPerson(person);
+    persist(address);
+    Assert.assertEquals(new Long(1), person.getId());
+    person = new Person("login", "surname", "firstname");
+    person = persist(person);
   }
+
 
 
 }
