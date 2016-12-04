@@ -3,7 +3,6 @@ package fr.apside.formation;
 import fr.apside.formation.model.Person;
 import fr.apside.formation.model.Training;
 import fr.apside.formation.services.BaseService;
-import fr.apside.formation.services.PersonService;
 import fr.apside.formation.test.EjbTest;
 import org.junit.Test;
 
