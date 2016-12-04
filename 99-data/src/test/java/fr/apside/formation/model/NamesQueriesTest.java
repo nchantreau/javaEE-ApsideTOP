@@ -41,8 +41,6 @@ public class NamesQueriesTest extends JpaTest {
     getPersonOrderByLogin().stream().forEach(person -> persist(new Participation(training1, person)));
     getPersonOrderByLogin().stream().filter(person -> person.getLogin().startsWith("a")).forEach(person -> persist(new Participation(training2, person)));
     List<Person> personInFormation2 = getPersonInTraining("formation2");
-    assertNull(personInFormation2);
-    assertEquals(2, personInFormation2.size());
   }
 
   private List<Person> getPersonInTraining(String trainingName) {
