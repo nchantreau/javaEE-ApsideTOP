@@ -21,9 +21,6 @@ public class PersonTest extends JpaTest {
     Address address = new Address("line", "zipcode", "city");
     address.setPerson(person);
     persist(address);
-    Assert.assertEquals(new Long(1), person.getId());
-    person = new Person("login", "surname", "firstname");
-    person = persist(person);
   }
 
   @Test

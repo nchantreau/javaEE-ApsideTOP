@@ -6,6 +6,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
@@ -17,9 +19,21 @@ import java.util.Set;
  * @author François Robert
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(name = Person.FIND_ALL_ORDER_BY_LOGIN
+        , query = "select p from Person p order by p.login"
+    ),
+    @NamedQuery(name = Person.FIND_BY_LOGIN
+        , query = "select p from Person p where p.login = :" + Person.LOGIN
+    )
+})
 public class Person implements Serializable {
 
   private static final long serialVersionUID = 3457989253623908694L;
+  public static final String FIND_ALL_ORDER_BY_LOGIN = "Person.FIND_ALL_ORDER_BY_LOGIN";
+  public static final String FIND_BY_LOGIN = "Person.FIND_BY_LOGIN";
+  public static final String LOGIN = "personLogin";
+  public static final String FIND_FOR_TRAINING = "Person.FIND_FOR_TRAINING";
 
   /**
    * Identifiant

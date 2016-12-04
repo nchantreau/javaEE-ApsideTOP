@@ -15,14 +15,21 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "type", discriminatorType = DiscriminatorType.STRING)
 @DiscriminatorValue("UNKNOW")
+@NamedQueries({
+    @NamedQuery(name = Training.FIND_ALL
+        , query = "select t from Training t order by t.id"
+    )
+})
 public class Training implements Serializable {
 
   private static final long serialVersionUID = -7688108012987555188L;
+  public static final String FIND_ALL = "Training.FIND_ALL_ORDER_BY_LOGIN";
+  public static final String NAME = "trainingName";
 
   @Id
   @GeneratedValue(strategy = IDENTITY)
   @Column(name = "training_id")
-  private Long Id;
+  private Long id;
 
   @Enumerated(EnumType.STRING)
   private TrainingType type;
@@ -72,11 +79,11 @@ public class Training implements Serializable {
   }
 
   public Long getId() {
-    return Id;
+    return id;
   }
 
   public void setId(Long id) {
-    Id = id;
+    this.id = id;
   }
 
   public TrainingType getType() {

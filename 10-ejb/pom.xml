@@ -10,6 +10,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>10-ejb</artifactId>
+    <packaging>jar</packaging>
+    <name>10 - EJB</name>
 
     <dependencies>
         <dependency>

@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.PrePersist;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -16,9 +18,15 @@ import java.util.Date;
  */
 @Entity
 @IdClass(ParticipationId.class)
+@NamedQueries({
+    @NamedQuery(name = Participation.FIND_PERSON_FOR_TRAINING
+        , query = "select p.participant from Participation p where p.training.name = :" + Training.NAME
+    )
+})
 public class Participation implements Serializable{
 
   private static final long serialVersionUID = 6082551497084979589L;
+  public static final String FIND_PERSON_FOR_TRAINING = "Participation.FIND_PERSON_FOR_TRAINING";
 
   @Id
   @JoinColumn(name = "participation_training_id")
