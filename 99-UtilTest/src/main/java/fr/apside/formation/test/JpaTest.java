@@ -14,7 +14,7 @@ import javax.persistence.Persistence;
 public class JpaTest {
 
   private static EntityManagerFactory entityManagerFactory;
-  private static EntityManager entityManager;
+  protected static EntityManager entityManager;
 
 
   @BeforeClass

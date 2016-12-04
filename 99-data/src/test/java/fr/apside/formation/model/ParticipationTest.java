@@ -26,7 +26,7 @@ public class ParticipationTest extends JpaTest {
     assertNotNull(participationFinded);
     assertNotNull(participationFinded.getParticipant());
     assertNotNull(participationFinded.getTraining());
-    Training training = find(Training.class, 1L);
+    Training training = entityManager.find(Training.class, 1L);
     assertNotNull(training.getParticipationSet());
     Assert.assertEquals(0, training.getParticipationSet().size());
     getEntityManager().refresh(training); // pour forcer le rafraississment des relations
