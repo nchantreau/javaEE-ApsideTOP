@@ -1,22 +1,10 @@
 package fr.apside.formation.model;
 
-import javax.persistence.Column;
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorType;
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 import java.util.Set;
 
 import static javax.persistence.GenerationType.IDENTITY;
@@ -46,29 +34,42 @@ public class Training implements Serializable {
   @JoinColumn(name = "training_person_id")
   private Person former;
 
-  /*
-  private Set<Category> categorySet;
-
-
-  private Set<Person> participantSet;
-
+  @Temporal(TemporalType.DATE)
+  @Column(nullable = false)
   private Date startDate;
 
   private Integer duration;
 
+  @ManyToMany(fetch = FetchType.LAZY)
+  @JoinTable(name = "training_category"
+      , joinColumns = {@JoinColumn(name = "tc_training_id", referencedColumnName = "training_id")}
+      , inverseJoinColumns = {@JoinColumn(name = "tc_category_id", referencedColumnName = "category_id")}
+  )
+  private Set<Category> categorySet;
+
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "training")
+  private Set<Participantion> participantionSet;
+
+  /*
   private Date limiteDateForParticipation;
   */
 
   public Training() {
   }
 
+  public Training(String name, Date startDate) {
+    this.name = name;
+    this.startDate = startDate;
+  }
+
   public Training(TrainingType type) {
     this.type = type;
   }
 
-  public Training(TrainingType type, String name) {
+  public Training(TrainingType type, String name, Date startDate) {
     this.type = type;
     this.name = name;
+    this.startDate = startDate;
   }
 
   public Long getId() {
@@ -101,5 +102,51 @@ public class Training implements Serializable {
 
   public void setFormer(Person former) {
     this.former = former;
+  }
+
+  public Date getStartDate() {
+    return startDate;
+  }
+
+  public void setStartDate(Date startDate) {
+    this.startDate = startDate;
+  }
+
+  public Integer getDuration() {
+    return duration;
+  }
+
+  public void setDuration(Integer duration) {
+    this.duration = duration;
+  }
+
+  public Set<Participantion> getParticipantionSet() {
+    return participantionSet;
+  }
+
+  public void setParticipantionSet(Set<Participantion> participantionSet) {
+    this.participantionSet = participantionSet;
+  }
+
+  public Set<Category> getCategorySet() {
+    return categorySet;
+  }
+
+  public void setCategorySet(Set<Category> categorySet) {
+    this.categorySet = categorySet;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (!(o instanceof Training)) return false;
+    Training training = (Training) o;
+    return Objects.equals(getName(), training.getName()) &&
+        Objects.equals(getStartDate(), training.getStartDate());
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(getName(), getStartDate());
   }
 }

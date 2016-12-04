@@ -1,5 +1,6 @@
 package fr.apside.formation;
 
+import fr.apside.formation.model.ParticipationTest;
 import fr.apside.formation.model.PersonTest;
 import fr.apside.formation.model.TrainigTest;
 import org.junit.runner.RunWith;
@@ -12,6 +13,7 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
     PersonTest.class
     , TrainigTest.class
+    , ParticipationTest.class
 })
 public class AllTest {
 }

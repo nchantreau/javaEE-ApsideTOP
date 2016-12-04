@@ -1,6 +1,7 @@
 package fr.apside.formation.model;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * @author François Robert
@@ -9,39 +10,45 @@ public class ParticipationId implements Serializable {
 
   private static final long serialVersionUID = 8358358735060081078L;
 
-  private Long trainingId;
+  private Long training;
 
-  private Long participantId;
+  private Long participant;
 
   public ParticipationId() {
   }
 
   public ParticipationId(Long trainingId, Long participantId) {
-    this.trainingId = trainingId;
-    this.participantId = participantId;
+    this.training = trainingId;
+    this.participant = participantId;
   }
 
-  public Long getTrainingId() {
-    return trainingId;
+  public Long getTraining() {
+    return training;
   }
 
-  public void setTrainingId(Long trainingId) {
-    this.trainingId = trainingId;
+  public void setTraining(Long training) {
+    this.training = training;
   }
 
-  public Long getParticipantId() {
-    return participantId;
+  public Long getParticipant() {
+    return participant;
   }
 
-  public void setParticipantId(Long participantId) {
-    this.participantId = participantId;
+  public void setParticipant(Long participant) {
+    this.participant = participant;
   }
 
   @Override
-  public String toString() {
-    return "ParticipationId{" +
-        "trainingId=" + trainingId +
-        ", participantId=" + participantId +
-        '}';
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (!(o instanceof ParticipationId)) return false;
+    ParticipationId that = (ParticipationId) o;
+    return Objects.equals(getTraining(), that.getTraining()) &&
+        Objects.equals(getParticipant(), that.getParticipant());
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(getTraining(), getParticipant());
   }
 }

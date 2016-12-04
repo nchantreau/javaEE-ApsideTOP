@@ -1,37 +1,47 @@
 package fr.apside.formation.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.IdClass;
+import javax.persistence.JoinColumn;
+import javax.persistence.PrePersist;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @author François Robert
  */
 @Entity
+@IdClass(ParticipationId.class)
 public class Participantion implements Serializable{
 
   private static final long serialVersionUID = 6082551497084979589L;
 
-  private ParticipationId participationId;
-
+  @Id
+  @JoinColumn(name = "participation_training_id")
   private Training training;
 
+  @Id
+  @JoinColumn(name = "participation_person_id")
   private Person participant;
+
+  @Temporal(TemporalType.DATE)
+  private Date registration;
 
   public Participantion() {
   }
 
   public Participantion(Training training, Person participant) {
-    setParticipationId(new ParticipationId(training.getId(), participant.getId()));
     this.training = training;
     this.participant = participant;
   }
 
-  public ParticipationId getParticipationId() {
-    return participationId;
-  }
-
-  public void setParticipationId(ParticipationId participationId) {
-    this.participationId = participationId;
+  @PrePersist
+  public void settingRegistrationDate() {
+    setRegistration(new Date());
   }
 
   public Training getTraining() {
@@ -48,5 +58,13 @@ public class Participantion implements Serializable{
 
   public void setParticipant(Person participant) {
     this.participant = participant;
+  }
+
+  public Date getRegistration() {
+    return registration;
+  }
+
+  public void setRegistration(Date registration) {
+    this.registration = registration;
   }
 }

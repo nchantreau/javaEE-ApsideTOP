@@ -26,8 +26,8 @@ public class TrainingSkill extends Training implements Serializable {
     super(TrainingType.QUALIFICATIVE);
   }
 
-  public TrainingSkill(String name, String qualifacationId, Place place) {
-    super(TrainingType.QUALIFICATIVE, name);
+  public TrainingSkill(String name, String qualifacationId, Place place, Date startDate) {
+    super(TrainingType.QUALIFICATIVE, name, startDate);
     this.qualifacationId = qualifacationId;
     this.place = place;
   }

@@ -30,13 +30,10 @@ public class Address implements Serializable {
   @JoinColumn(name = "address_person_id")
   private Person person;
 
-  @Column(name = "address_line", length = 100)
   private String line;
 
-  @Column(name = "zip_code", length = 10)
   private String zipCode;
 
-  @Column(name = "address_city", length = 100)
   private String city;
 
   public Address() {

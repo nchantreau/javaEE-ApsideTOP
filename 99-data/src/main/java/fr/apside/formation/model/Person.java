@@ -3,6 +3,7 @@ package fr.apside.formation.model;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -52,6 +53,8 @@ public class Person implements Serializable {
   @PrimaryKeyJoinColumn(name = "person_id", referencedColumnName = "address_person_id")
   private Address address;
 
+  @OneToMany(mappedBy = "participant", fetch = FetchType.LAZY)
+  private Set<Participantion> trainingParticipationSet;
   /*
   private Set<Training> teachingTrainingSet;
 
@@ -105,6 +108,19 @@ public class Person implements Serializable {
 
   public void setAddress(Address address) {
     this.address = address;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (!(o instanceof Person)) return false;
+    Person person = (Person) o;
+    return Objects.equals(getLogin(), person.getLogin());
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(getLogin());
   }
 
   @Override

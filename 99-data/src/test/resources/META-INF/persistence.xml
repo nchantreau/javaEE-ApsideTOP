@@ -9,6 +9,8 @@
         <class>fr.apside.formation.model.TrainingOnline</class>
         <class>fr.apside.formation.model.TrainingSkill</class>
         <class>fr.apside.formation.model.Place</class>
+        <class>fr.apside.formation.model.Participantion</class>
+        <class>fr.apside.formation.model.Category</class>
 		<!-- declaration des classes -->
 		<properties>
 

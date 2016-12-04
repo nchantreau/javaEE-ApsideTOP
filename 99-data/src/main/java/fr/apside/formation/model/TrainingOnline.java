@@ -3,6 +3,7 @@ package fr.apside.formation.model;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @author François Robert
@@ -19,8 +20,8 @@ public class TrainingOnline extends Training implements Serializable {
     super(TrainingType.ONLINE);
   }
 
-  public TrainingOnline(String trainingUrl) {
-    super(TrainingType.ONLINE);
+  public TrainingOnline(String name, String trainingUrl, Date startDate) {
+    super(TrainingType.ONLINE, name, startDate);
     this.trainingUrl = trainingUrl;
   }
 

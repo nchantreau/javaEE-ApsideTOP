@@ -33,6 +33,18 @@ public class JpaTest {
     }
   }
 
+  protected EntityManager getEntityManager() {
+    return entityManager;
+  }
+
+  protected <E> E find(Class<E> entityClass, Object id) {
+    EntityTransaction entityTransaction = entityManager.getTransaction();
+    entityTransaction.begin();
+    E entity = entityManager.find(entityClass, id);
+    entityTransaction.commit();
+    return entity;
+  }
+
   /**
    * Persiste en base une entité
    * @param entity entité
