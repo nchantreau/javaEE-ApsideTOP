@@ -1,9 +1,6 @@
 package fr.apside.formation;
 
-import fr.apside.formation.model.Address;
-import fr.apside.formation.model.Person;
 import fr.apside.formation.test.JpaTest;
-import org.junit.Assert;
 import org.junit.Test;
 
 import javax.persistence.EntityManager;

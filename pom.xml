@@ -14,6 +14,7 @@
         <module>10-ejb</module>
         <module>99-data</module>
         <module>99-UtilTest</module>
+        <module>20-JSF-webApp</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -22,10 +23,16 @@
         <javaee.version>7.0</javaee.version>
         <eclipselink.version>2.6.4</eclipselink.version>
         <postgresql.version>9.4.1212</postgresql.version>
+        <version.glassfish>4.1</version.glassfish>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>fr.apside</groupId>
+                <artifactId>99-data</artifactId>
+                <version>${project.version}</version>
+            </dependency>
             <dependency>
                 <groupId>fr.apside</groupId>
                 <artifactId>99-UtilTest</artifactId>
@@ -58,6 +65,11 @@
                 <version>4.12</version>
                 <scope>test</scope>
             </dependency>
+            <dependency>
+                <groupId>org.glassfish.main.extras</groupId>
+                <artifactId>glassfish-embedded-all</artifactId>
+                <version>${version.glassfish}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -67,6 +79,7 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.6.0</version>
+                <inherited>true</inherited>
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>

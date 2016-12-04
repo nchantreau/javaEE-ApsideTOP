@@ -1,6 +1,5 @@
 package fr.apside.formation;
 
-import fr.apside.formation.model.Person;
 import fr.apside.formation.test.JpaTest;
 import org.junit.Test;
 

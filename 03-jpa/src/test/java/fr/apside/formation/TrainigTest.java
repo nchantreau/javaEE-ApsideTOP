@@ -1,15 +1,7 @@
 package fr.apside.formation;
 
-import fr.apside.formation.model.Address;
-import fr.apside.formation.model.Person;
-import fr.apside.formation.model.Training;
-import fr.apside.formation.model.TrainingAgency;
 import fr.apside.formation.test.JpaTest;
 import org.junit.Test;
-
-import java.util.Date;
-
-import static fr.apside.formation.model.TrainingType.UNKNOW;
 
 /**
  * @author François Robert

@@ -1,19 +1,10 @@
 package fr.apside.formation;
 
-import fr.apside.formation.model.Participation;
 import fr.apside.formation.model.Person;
-import fr.apside.formation.model.Training;
-import fr.apside.formation.model.TrainingAgency;
 import fr.apside.formation.test.JpaTest;
-import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.Date;
 import java.util.List;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
 
 /**
  * @author François Robert
