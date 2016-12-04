@@ -10,6 +10,7 @@
     <modules>
         <module>01-jpa</module>
         <module>02-jpa</module>
+        <module>03-jpa</module>
         <module>10-ejb</module>
         <module>99-data</module>
         <module>99-UtilTest</module>
