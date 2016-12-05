@@ -105,6 +105,9 @@ public class ServicesTest extends EjbTest {
     // Créer une formation OnLine
     // Implementer les tests afin de valider votre fonctionnement
 
+    // créer les méthodes CRUD pour les formations
+    // créer les méthodes de recherche de formation par nom, par catégories...
+
     // créer une/des méthode(s) permettant de modifier et persister les modifications sur les formations (nom, catégoryn salle, url, etc...)
     // Implementer les tests afin de valider votre fonctionnement
 
