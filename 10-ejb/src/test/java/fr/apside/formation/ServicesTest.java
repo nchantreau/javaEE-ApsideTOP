@@ -1,7 +1,10 @@
 package fr.apside.formation;
 
+import fr.apside.formation.model.Category;
 import fr.apside.formation.model.Person;
 import fr.apside.formation.model.Training;
+import fr.apside.formation.model.TrainingAgency;
+import fr.apside.formation.model.TrainingType;
 import fr.apside.formation.services.BaseService;
 import fr.apside.formation.services.PersonService;
 import fr.apside.formation.test.EjbTest;
@@ -77,5 +80,35 @@ public class ServicesTest extends EjbTest {
     Person deletedIronman = personService.delete(ironman);
     assertNull(deletedIronman);
   }
+
+  @Test
+  public void testTrainingService() throws Exception {
+    /*
+    Créer un service qui permet de gérer les formations (création, via enuméré est imposibilité de créer une formation de type UNKNOW)
+    ATTENTION, le service ce gestion des Catégorie ne dot pas être le même
+     */
+    /*
+    TrainingService trainingService = lookup(TrainingService.class);
+    Training training = trainingService.createNewTraining(TrainingType.AGENCY, "Formation JavaEE", "java");
+    assertNotNull(training);
+    assertTrue(training instanceof TrainingAgency);
+    assertNotNull(training.getId());
+    assertTrue(training.getCategorySet().size() > 0);
+    Category category = training.getCategorySet().stream().findFirst().orElse(null);
+    assertNotNull(category);
+    assertNotNull(category.getId());
+    assertEquals(new Long(1L), category.getId());
+    */
+    // dans le même service créer une méthode permttant d'ajouter une autre catégorie (et de la créer si elle n'existe pas)
+    // Implementer les tests afin de valider votre fonctionnement
+
+    // Créer une formation OnLine
+    // Implementer les tests afin de valider votre fonctionnement
+
+    // créer une/des méthode(s) permettant de modifier et persister les modifications sur les formations (nom, catégoryn salle, url, etc...)
+    // Implementer les tests afin de valider votre fonctionnement
+
+  }
+
 
 }
