@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import java.io.Serializable;
 import java.util.Set;
 
@@ -16,9 +18,16 @@ import java.util.Set;
  * @author François Robert
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(name = Category.FIND_BY_NAME
+        , query = "select c from Category c where c.name = :" + Category.NAME
+    )
+})
 public class Category implements Serializable {
 
   private static final long serialVersionUID = 6132112112831771298L;
+  public static final java.lang.String FIND_BY_NAME = "Category.FIND_BY_NAME";
+  public static final String NAME = "categoryName";
 
   @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "category_id")
