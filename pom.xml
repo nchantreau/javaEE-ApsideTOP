@@ -25,6 +25,7 @@
         <eclipselink.version>2.6.4</eclipselink.version>
         <postgresql.version>9.4.1212</postgresql.version>
         <version.glassfish>4.1</version.glassfish>
+        <primefaces.version>6.0</primefaces.version>
     </properties>
 
     <dependencyManagement>
@@ -70,6 +71,11 @@
                 <groupId>org.glassfish.main.extras</groupId>
                 <artifactId>glassfish-embedded-all</artifactId>
                 <version>${version.glassfish}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.primefaces</groupId>
+                <artifactId>primefaces</artifactId>
+                <version>${primefaces.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

@@ -54,7 +54,7 @@ public class Training implements Serializable {
   )
   private Set<Category> categorySet;
 
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "training")
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "trainingId")
   private Set<Participation> participationSet;
 
   /*

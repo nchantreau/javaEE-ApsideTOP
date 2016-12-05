@@ -19,8 +19,20 @@
             <artifactId>javaee-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>fr.apside</groupId>
-            <artifactId>99-data</artifactId>
+            <groupId>org.primefaces</groupId>
+            <artifactId>primefaces</artifactId>
         </dependency>
     </dependencies>
+    <build>
+        <finalName>formation</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
