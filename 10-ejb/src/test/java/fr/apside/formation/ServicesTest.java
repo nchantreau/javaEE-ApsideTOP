@@ -3,6 +3,7 @@ package fr.apside.formation;
 import fr.apside.formation.model.Person;
 import fr.apside.formation.model.Training;
 import fr.apside.formation.services.BaseService;
+import fr.apside.formation.services.PersonService;
 import fr.apside.formation.test.EjbTest;
 import org.junit.Test;
 
@@ -11,9 +12,9 @@ import javax.naming.NamingException;
 import java.time.Period;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * @author François Robert
@@ -28,62 +29,53 @@ public class ServicesTest extends EjbTest {
   }
 
   @Test
-  public void getPersonList() throws Exception {
-    BaseService baseService = lookup(BaseService.class);
-    List<Person> personList = baseService.getPersonList();
-    assertNotNull(personList);
-  }
-
-  @Test
-  public void createPerson() throws Exception {
-    BaseService baseService = lookup(BaseService.class);
-    Person person = baseService.createPerson("login", "surname", "firstname");
+  public void testPersonServiceCreate() throws Exception {
+    PersonService personService = lookup(PersonService.class);
+    assertNotNull(personService);
+    Person person = personService.createPerson("ironMan", "Stark", "Anthony");
     assertNotNull(person);
     assertNotNull(person.getId());
+    assertEquals(new Long(1L), person.getId());
   }
 
   @Test
-  public void getPersonById() throws Exception {
-    BaseService baseService = lookup(BaseService.class);
-    baseService.createPerson("login", "surname", "firstname");
-    Person person = baseService.getPersonById(1L);
-    assertNotNull(person);
+  public void testPersonServiceFindAll() throws Exception {
+    PersonService personService = lookup(PersonService.class);
+    final int personMaxCount = 100;
+    for (int idx = 0; idx < personMaxCount; idx++) {
+      personService.createPerson("login" + String.format ("%03d", personMaxCount - idx), "surname_" + idx, "firstname-" + idx);
+    }
+    List<Person> personList = personService.findAll();
+    assertNotNull(personList);
+    assertTrue(personList.size() > 0);
+    List<Person> paginatedPersonList = personService.findAll(2, 10);
+    assertNotNull(paginatedPersonList);
+    assertTrue(paginatedPersonList.size() == 10);
+    Person person = paginatedPersonList.get(0);
+    assertEquals(new Long(90L), person.getId());
+    assertEquals("login011", person.getLogin());
   }
 
   @Test
-  public void getPersonByLogin() throws Exception {
-    BaseService baseService = lookup(BaseService.class);
-    baseService.createPerson("login", "surname", "firstname");
-    Person person = baseService.getPersonByLogin("login");
-    assertNotNull(person);
-  }
-
-  @Test
-  public void mergePerson() throws Exception {
-    BaseService baseService = lookup(BaseService.class);
-    baseService.createPerson("login", "surname", "firstname");
-    Person personDatabase = baseService.getPersonByLogin("login");
-    personDatabase.setFirstname("thor");
-    baseService.mergePerson(personDatabase);
-  }
-
-  @Test
-  public void deletePerson() throws Exception {
-    BaseService baseService = lookup(BaseService.class);
-    Long personToDeleteId = baseService.createPerson("login", "surname", "firstname").getId();
-    Person personToDelete = baseService.deletePerson(personToDeleteId);
-    assertNotNull(personToDelete);
-    Person personDeleted = baseService.getPersonById(personToDeleteId);
-    assertNull(personDeleted);
-  }
-
-  @Test
-  public void getTrainingListForPerson() throws Exception {
-    BaseService baseService = lookup(BaseService.class);
-    Person person = baseService.createPerson("login", "surname", "firstname");
-    // création de liste de formation et affectation :)
-    List<Training> trainingList = baseService.getTrainingListForPerson(person);
-    assertNotNull(trainingList);
+  public void testPersonServiceFindByLoginAndMergeAndDelete() throws Exception {
+    PersonService personService = lookup(PersonService.class);
+    assertNotNull(personService);
+    personService.createPerson("ironMan", "Stark", "Anthony");
+    //---
+    Person ironman = personService.findByLogin("ironMan");
+    assertNotNull(ironman);
+    assertEquals("Anthony", ironman.getFirstname());
+    ironman.setFirstname(ironman.getFirstname() + " Junior");
+    personService.merge(ironman);
+    Person anthonyStarkJunior = personService.findById(1L);
+    assertNotNull(anthonyStarkJunior);
+    assertNotEquals("Anthony", ironman.getFirstname());
+    assertEquals("Anthony Junior", ironman.getFirstname());
+    Person deletedAnthonyStarkJunior = personService.delete(anthonyStarkJunior);
+    assertNotNull(deletedAnthonyStarkJunior);
+    assertNull(personService.findById(anthonyStarkJunior.getId()));
+    Person deletedIronman = personService.delete(ironman);
+    assertNull(deletedIronman);
   }
 
 }
