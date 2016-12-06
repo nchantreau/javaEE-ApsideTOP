@@ -13,9 +13,10 @@
         <module>03-jpa</module>
         <module>10-ejb</module>
         <module>11-ejb</module>
+        <module>20-JSF-webApp</module>
+        <module>30-jaxb</module>
         <module>99-data</module>
         <module>99-UtilTest</module>
-        <module>20-JSF-webApp</module>
     </modules>
     <packaging>pom</packaging>
 
