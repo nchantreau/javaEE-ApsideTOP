@@ -24,6 +24,5 @@ public class PersonSOAPWebservice implements PersontDTOConverter {
   @WebMethod
   public List<PersonDTO> getPersonList() {
     return personService.findAll().stream().map(this::toDTO).collect(Collectors.toList());
-
   }
 }
