@@ -18,6 +18,8 @@ public interface PersontDTOConverter extends EntityDTOConverter<Person, PersonDT
 
   @Override
   default Person toEntity(PersonDTO dto) {
-    return new Person(dto.getLogin(), null, null);
+    Person person = new Person(dto.getLogin(), null, null);
+    person.setId(dto.getId());
+    return person;
   }
 }
