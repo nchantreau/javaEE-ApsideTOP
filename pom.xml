@@ -16,6 +16,7 @@
         <module>20-JSF-webApp</module>
         <module>25-app-formation</module>
         <module>30-jaxb</module>
+        <module>31-jaxb</module>
         <module>99-data</module>
         <module>99-UtilTest</module>
     </modules>
